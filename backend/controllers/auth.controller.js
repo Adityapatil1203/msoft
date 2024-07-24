@@ -35,16 +35,9 @@ const register = async (req, res) => {
 
     await user.save();
 
-    const payload = {
-      user: {
-        id: user.id,
-      },
-    };
-
-    jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' }, (err, token) => {
-      if (err) throw err;
-      res.json({ token });
-    });
+  
+      res.status(200).json({ msg:"User created successfully" });
+ 
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');

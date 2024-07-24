@@ -4,7 +4,7 @@ const connectDB = require('./db/db.js');
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const authRoutes = require('./routes/user.routes.js')
-
+const cors = require("cors")
 dotenv.config();
 
 const app = express();
@@ -15,6 +15,7 @@ connectDB();
 // Middleware
 app.use(bodyParser.json());
 app.use(express.json())
+app.use(cors())
 // Routes
 app.use('/api/auth', authRoutes );
 
