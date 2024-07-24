@@ -23,7 +23,7 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://msoft-2.onrender.com/api/auth/login', formData);
+      const res = await axios.post('http://localhost:5000/api/auth/login', formData);
       console.log(res.data);
       toast.success('Login successful');
       // Save the token to local storage or context

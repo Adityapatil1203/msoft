@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
   division: { type: String },
   mobile: { type: String, required: true },
   password: { type: String, required: true },
-  photo: { type: String , required:true }, // Add photo field
+  photo: { type: String  }, // Add photo field
 });
 
 module.exports = mongoose.model('User', UserSchema);

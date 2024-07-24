@@ -1,4 +1,3 @@
-// src/components/RegistrationForm.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast,ToastContainer } from 'react-toastify';
@@ -41,7 +40,7 @@ const RegisterForm = () => {
     }
 
     try {
-      const res = await axios.post('https://msoft-2.onrender.com/api/auth/register', data);
+      const res = await axios.post('http://localhost:5000/api/auth/register', data);
       console.log(res.data);
       toast.success('User registered successfully');
       setFormData({
@@ -159,7 +158,7 @@ const RegisterForm = () => {
   
           <div className="mb-4">
             <label className="block text-gray-700">Photo</label>
-            <input type="file" name="photo" onChange={handleChange} className="w-full p-2 border border-gray-300 rounded mt-1" required />
+            <input type="file" name="photo" onChange={handleChange} className="w-full p-2 border border-gray-300 rounded mt-1"  />
           </div>
         </div>
   
