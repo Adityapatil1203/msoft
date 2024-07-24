@@ -40,7 +40,7 @@ const RegisterForm = () => {
     }
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', data);
+      const res = await axios.post('https://msoft-3.onrender.com/api/auth/register', data);
       console.log(res.data);
       toast.success('User registered successfully');
       setFormData({
