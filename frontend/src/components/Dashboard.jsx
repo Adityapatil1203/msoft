@@ -1,7 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import * as XLSX from 'xlsx';
+import { useState } from 'react';
 
 const Dashboard = () => {
+
+  const [excelData, setExcelData] = useState([]);
+
+  const handleButtonClick = async () => {
+   // Create a link element
+   const link = document.createElement('a');
+   // Set the href attribute to the path of the Excel file
+   link.href = '/b1.xlsx';
+   // Set the download attribute to suggest a file name (optional)
+   link.download = 'b1.xlsx';
+   // Append the link to the body (necessary for Firefox)
+   document.body.appendChild(link);
+   // Programmatically click the link to trigger the download/open
+   link.click();
+   // Remove the link from the document
+   document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <h1 className="text-2xl font-bold text-center mb-8">Dashboard</h1>
@@ -76,6 +96,13 @@ const Dashboard = () => {
               PW Examination List
             </Link>
           </div> */}
+           <button
+          onClick={handleButtonClick}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+        >
+          Open Excel File
+        </button>
+      
         </div>
       </div>
     </div>

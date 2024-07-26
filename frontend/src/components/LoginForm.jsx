@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { baseUrl } from '../const';
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -25,11 +26,14 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('https://msoft-3.onrender.com/api/auth/login', formData);
+      const res = await axios.post(`${baseUrl}/api/auth/login`, formData);
       console.log(res.data);
       toast.success('Login successful');
       // Save the token to local storage or context
       localStorage.setItem('token', res.data.token);
+      localStorage.setItem('user', JSON.stringify(res.data.user));
+
+      console.log("user :",res.data.user);
       // Navigate to the desired page after a short delay
       setTimeout(() => {
         navigate('/section');
@@ -41,7 +45,7 @@ const LoginForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center">
+    <div className="min-h-screen  bg-blue-100 flex items-center justify-center">
       <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
         <h2 className="text-2xl font-bold mb-6 text-gray-900">Login</h2>
         

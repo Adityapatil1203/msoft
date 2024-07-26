@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { toast,ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import axios from 'axios';
+import { baseUrl } from '../const';
 
 const RegisterForm = () => {
   const [formData, setFormData] = useState({
@@ -40,7 +41,7 @@ const RegisterForm = () => {
     }
 
     try {
-      const res = await axios.post('https://msoft-3.onrender.com/api/auth/register', data);
+      const res = await axios.post(`${baseUrl}/api/auth/register`, data);
       console.log(res.data);
       toast.success('User registered successfully');
       setFormData({
@@ -69,7 +70,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-blue-100 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div className="max-w-md w-full space-y-8">
       <div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">

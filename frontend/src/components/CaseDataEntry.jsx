@@ -1,6 +1,22 @@
 import React from 'react';
 
 const CaseDataEntry = () => {
+
+  const handleButtonClick = async () => {
+    // Create a link element
+    const link = document.createElement('a');
+    // Set the href attribute to the path of the Excel file
+    link.href = '/b3.xlsx';
+    // Set the download attribute to suggest a file name (optional)
+    link.download = 'b3.xlsx';
+    // Append the link to the body (necessary for Firefox)
+    document.body.appendChild(link);
+    // Programmatically click the link to trigger the download/open
+    link.click();
+    // Remove the link from the document
+    document.body.removeChild(link);
+   };
+
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
@@ -94,6 +110,12 @@ const CaseDataEntry = () => {
               (Index will appear)
             </p>
           </div>
+          <button
+          onClick={handleButtonClick}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
+        >
+          Open Excel File
+        </button>
         </div>
       </div>
     </div>
