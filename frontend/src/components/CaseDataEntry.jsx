@@ -6,9 +6,9 @@ const CaseDataEntry = () => {
     // Create a link element
     const link = document.createElement('a');
     // Set the href attribute to the path of the Excel file
-    link.href = '/b3.xlsx';
+    link.href = '/b4.xlsx';
     // Set the download attribute to suggest a file name (optional)
-    link.download = 'b3.xlsx';
+    link.download = 'b4.xlsx';
     // Append the link to the body (necessary for Firefox)
     document.body.appendChild(link);
     // Programmatically click the link to trigger the download/open
