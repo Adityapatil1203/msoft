@@ -46,7 +46,7 @@ function App() {
           <Route path="/section" element={user ? <Section />:<LoginForm />} />
           <Route path="/dashboard" element={user ? <Dashboard />: <LoginForm />} />
         <Route path="/court-hearing" element={user ? <CourtHearing />:<LoginForm />} />
-        <Route path="/case-data-entry" element={user ?<CaseDataEntry />:<LoginForm />} />
+        <Route path="/case-data-entry" element={user? <CaseDataEntry/>:<LoginForm/>} />
         <Route path="/achievement" element={user ? <Achievement />:<LoginForm />} />
           {/* Add other routes here */}
         </Routes>

@@ -1,123 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
+import FormOne from './FormOne';
 
 const CaseDataEntry = () => {
+  const [selectedOption, setSelectedOption] = useState('');
 
-  const handleButtonClick = async () => {
-    // Create a link element
-    const link = document.createElement('a');
-    // Set the href attribute to the path of the Excel file
-    link.href = '/b4.xlsx';
-    // Set the download attribute to suggest a file name (optional)
-    link.download = 'b4.xlsx';
-    // Append the link to the body (necessary for Firefox)
-    document.body.appendChild(link);
-    // Programmatically click the link to trigger the download/open
-    link.click();
-    // Remove the link from the document
-    document.body.removeChild(link);
-   };
+  const handleSelectionChange = (e) => {
+    setSelectedOption(e.target.value);
+  };
+
+  const renderForm = () => {
+    switch (selectedOption) {
+      case 'भाग ५ गुन्हांची नोंद':
+        return <FormOne/>
+      case 'भाग ६ गुन्हांची नोंद':
+        return <FormOne/>
+      case 'दारूबंदी गुन्हांची नोंद':
+        return <FormOne/>
+      case 'कोर्टाकडून आलेल्या केसेसची नोंद':
+        return <FormOne/>
+      case 'अकस्मात मृत्यू नोंद':
+        return <div>Form for अकस्मात मृत्यू नोंद</div>;
+      case 'मोटार अपघात नोंद':
+        return <div>Form for मोटार अपघात नोंद</div>;
+      case 'वरिष्ट अर्ज नोंद':
+        return <div>Form for वरिष्ट अर्ज नोंद</div>;
+      case 'स्थानिक अर्ज नोंद':
+        return <div>Form for स्थानिक अर्ज नोंद</div>;
+      case 'प्रति.कार्य.सी.आर.पी.सी. १०७':
+        return <div>Form for प्रति.कार्य.सी.आर.पी.सी. १०७</div>;
+      case 'प्रति.कार्य.सी.आर.पी.सी. १०९':
+        return <div>Form for प्रति.कार्य.सी.आर.पी.सी. १०९</div>;
+      case 'सी.आर.पी.सी. कलम ११०':
+        return <div>Form for सी.आर.पी.सी. कलम ११०</div>;
+      case 'प्रति कार्य सी.आर.पी.सी.':
+        return <div>Form for प्रति कार्य सी.आर.पी.सी.</div>;
+      case 'हदपार नोंद':
+        return <div>Form for हदपार नोंद</div>;
+      case 'अग्नि उपद्रव नोंद':
+        return <div>Form for अग्नि उपद्रव नोंद</div>;
+      case 'मिसिंग नोंद':
+        return <div>Form for मिसिंग नोंद</div>;
+      case 'गहाळ मालाची नोंद':
+        return <div>Form for गहाळ मालाची नोंद</div>;
+      default:
+        return null;
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-4">
-      <div className="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+    <div className="min-h-screen w-full bg-gray-100 p-4 flex flex-col items-center justify-center">
+      <div className="max-w-lg w-full bg-white p-6 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-center mb-8">Case Data Entry</h1>
 
-        {/* Summary of Data */}
-        <div className="mb-8">
-        
-          <h2 className="text-2xl font-bold mb-4  ">Summary of Data</h2>
-
-        <div className="flex flex-wrap gap-4 mb-6">
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-lg border border-blue-600 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition duration-300">
-            DATE FROM
-          </button>
-          <button className="bg-green-500 text-white px-4 py-2 rounded-lg border border-green-600 hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition duration-300">
-            DATE TO
-          </button>
-        </div>
-          
-          <div className="overflow-x-auto">
-          <table className="min-w-full bg-white border rounded-lg">
-  <thead>
-    <tr>
-      <th className="px-4 py-2 border">ACT</th>
-      <th colSpan="3" className="px-4 py-2 border text-center">PENDING MORE THAN</th>
-      <th className="px-4 py-2 border">PARTIALLY ENQUIRY COMPLETED</th>
-      <th className="px-4 py-2 border">ENQUIRY COMPLETED</th>
-    </tr>
-    <tr>
-      <th className="px-4 py-2 border"></th>
-      <th className="px-4 py-2 border">15</th>
-      <th className="px-4 py-2 border">30</th>
-      <th className="px-4 py-2 border">45</th>
-      <th className="px-4 py-2 border"></th>
-      <th className="px-4 py-2 border"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td className="px-4 py-2 border">Rly ACT</td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-    </tr>
-    <tr>
-      <td className="px-4 py-2 border">RP UP</td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-    </tr>
-    <tr>
-      <td className="px-4 py-2 border">UTI/RCT</td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-      <td className="px-4 py-2 border"></td>
-    </tr>
-  </tbody>
-</table>
-
-          </div>
+        <div className="mb-4">
+          <label htmlFor="case-select" className="block text-lg font-medium text-gray-700 mb-2">
+            Select a Case Type:
+          </label>
+          <select
+            id="case-select"
+            className="block w-full mt-1 p-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            value={selectedOption}
+            onChange={handleSelectionChange}
+          >
+            <option value="">Select an option</option>
+            <option value="भाग ५ गुन्हांची नोंद">भाग ५ गुन्हांची नोंद</option>
+            <option value="भाग ६ गुन्हांची नोंद">भाग ६ गुन्हांची नोंद</option>
+            <option value="दारूबंदी गुन्हांची नोंद">दारूंदी गुन्हांची नोंद</option>
+            <option value="कोर्टाकडून आलेल्या केसेसची नोंद">कोर्टाकडून आलेल्या केसेसची नोंद</option>
+            <option value="अकस्मात मृत्यू नोंद">अकस्मात मृत्यू नोंद</option>
+            <option value="मोटार अपघात नोंद">मोटार अपघात नोंद</option>
+            <option value="वरिष्ट अर्ज नोंद">वरिष्ट अर्ज नोंद</option>
+            <option value="स्थानिक अर्ज नोंद">स्थानिक अर्ज नोंद</option>
+            <option value="प्रति.कार्य.सी.आर.पी.सी. १०७">प्रति.कार्य.सी.आर.पी.सी. १०७</option>
+            <option value="प्रति.कार्य.सी.आर.पी.सी. १०९">प्रति.कार्य.सी.आर.पी.सी. १०९</option>
+            <option value="सी.आर.पी.सी. कलम ११०">सी.आर.पी.सी. कलम ११०</option>
+            <option value="प्रति कार्य सी.आर.पी.सी.">प्रति कार्य सी.आर.पी.सी.</option>
+            <option value="हदपार नोंद">हदपार नोंद</option>
+            <option value="अग्नि उपद्रव नोंद">अग्नि उपद्रव नोंद</option>
+            <option value="मिसिंग नोंद">मिसिंग नोंद</option>
+            <option value="गहाळ मालाची नोंद">गहाळ मालाची नोंद</option>
+          </select>
         </div>
 
-        {/* Case Data */}
-        <div>
-          <h2 className="text-2xl font-bold mb-4">Case Data</h2>
-          <p className="mb-4 text-gray-700">
-            Facility will be available as per registration agency like Police Personnel & RPF Personnel etc.
-          </p>
-
-          <div className="mb-8">
-            <h3 className="text-xl font-semibold mb-2">A) FOR RPF:</h3>
-            <p className="mb-4 text-gray-700">
-              (Auto select case)
-            </p>
-            <ul className="list-disc list-inside mb-4">
-              <li>Rly ACT (The necessary Form for data entry will be available)</li>
-              <li>RP UP Act</li>
-              <li>UTI/RCT</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold mb-2">B) FOR POLICE:</h3>
-            <p className="text-gray-700">
-              (Index will appear)
-            </p>
-          </div>
-          <button
-          onClick={handleButtonClick}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition duration-300"
-        >
-          Open Excel File
-        </button>
-        </div>
+        {/* Render the form based on the selected option */}
+       
       </div>
+      {renderForm() && (
+          <div className="mt-6">
+            {renderForm()}
+          </div>
+        )}
     </div>
   );
 };
