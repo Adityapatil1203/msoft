@@ -34,7 +34,7 @@ const FormOne = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:4000/api/gunha/addGunha', formData);
+      const response = await axios.post('https://msoft-3.onrender.com/api/gunha/addGunha', formData);
       console.log('Form Data Submitted:', response.data);
       alert('Form submitted successfully!');
     } catch (error) {
