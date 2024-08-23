@@ -4,7 +4,10 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/user.routes.js');
 const cors = require('cors');
 const pool = require('./db/db.js'); // Import the connection pool
-const formGunhaRoutes = require('./routes/formGunha.routes.js')
+// const formGunhaRoutes = require('./routes/formGunha.routes.js')
+// const formAksmatRoutes = require('./routes/formAksmat.routes.js')
+const allGunhaRoutes = require('./routes/allRoutes.js')
+const authMiddleware = require('./middlewares/auth.middleware.js')
 dotenv.config();
 
 const app = express();
@@ -16,7 +19,8 @@ app.use(cors());
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/gunha', formGunhaRoutes);
+app.use('/api', allGunhaRoutes );
+
 
 const PORT = process.env.PORT || 4000;
 

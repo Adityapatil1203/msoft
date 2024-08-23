@@ -9,6 +9,8 @@ import Section from './components/Section';
 import CourtHearing from './components/CourtHearing';
 import CaseDataEntry from './components/CaseDataEntry';
 import Achievement from './components/Achievement';
+import MyProfile from './components/MyProfile';
+import Report from './components/Report';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,7 +40,7 @@ function App() {
 
   return (
     <Router>
-      <div className='bg-blue-100' >
+      <div className='' >
         <Routes>
           <Route path="/" element={<RegisterForm />} />
           <Route path="/login" element={<LoginForm />} />
@@ -48,8 +50,11 @@ function App() {
         <Route path="/court-hearing" element={user ? <CourtHearing />:<LoginForm />} />
         <Route path="/case-data-entry" element={user? <CaseDataEntry/>:<LoginForm/>} />
         <Route path="/achievement" element={user ? <Achievement />:<LoginForm />} />
+        <Route path="/myprofile" element={user? <MyProfile/>:<LoginForm/>} />
+        <Route path="/report" element={user? <Report/>:<LoginForm/>} />
           {/* Add other routes here */}
         </Routes>
+       
         <ToastContainer />
       </div>
     </Router>

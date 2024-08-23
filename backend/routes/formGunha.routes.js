@@ -1,5 +1,5 @@
 const express = require('express');
-const { addGunhaDetails } = require('../controllers/formGunhaController.js');
+const { addGunhaDetails } = require('../controllers/allGunhaController.js');
 
 const router = express.Router();
 

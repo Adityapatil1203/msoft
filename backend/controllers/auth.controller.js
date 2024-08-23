@@ -85,7 +85,7 @@ const register = async (req, res) => {
   const { name, dob, designation, state, district, taluka, pincode, postingPlace, mobile, password, confirmPassword } = req.body;
   const photo = req.file ? req.file.path : null;
 
-  console.log(name, dob, designation, state, district, taluka, pincode, postingPlace, mobile, password, confirmPassword);
+  // console.log(name, dob, designation, state, district, taluka, pincode, postingPlace, mobile, password, confirmPassword);
 
   try {
     // Get a connection from the pool
@@ -169,4 +169,42 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+const updateUser = async (req,res)=>{
+  const { name, dob, designation, state, district, taluka, pincode, postingPlace, mobile } = req.body;
+
+  try {
+    const connection = await pool.getConnection();
+
+    try {
+      // Update the user's details in the database
+      const [updateResult] = await connection.execute(
+        `UPDATE empreg SET 
+        name = ?, 
+        dob = ?, 
+        designation = ?, 
+        state = ?, 
+        district = ?, 
+        taluka = ?, 
+        pincode = ?, 
+        postingPlace = ?
+        WHERE mobile = ?`,
+        [name, dob, designation, state, district, taluka, pincode, postingPlace, mobile]
+      );
+
+      if (updateResult.affectedRows > 0) {
+        // Fetch updated user details to return to the client
+        const [updatedUser] = await connection.execute('SELECT * FROM empreg WHERE mobile = ?', [mobile]);
+        res.status(200).json(updatedUser[0]);
+      } else {
+        res.status(404).json({ msg: "User not found or no changes made." });
+      }
+    } finally {
+      connection.release(); // Always release the connection back
+    }
+  } catch (err) {
+    console.error('Database or server error:', err);
+    res.status(500).send('Server error');
+  }
+}
+
+module.exports = { register, login , updateUser };

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-const Dashboard = () => {
+const Section = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate()
   useEffect(() => {
@@ -39,25 +39,25 @@ const Dashboard = () => {
           <div className="mb-8 p-4  rounded-lg shadow-sm">
             {/* <h2 className="text-2xl font-bold text-center text-gray-800 mb-4">Your Information</h2> */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="flex justify-between">
-                <span className="font-semibold">Name:</span>
-                <span>{user?.name}</span>
+              <div className="flex justify-evenly">
+                <span className="font-semibold">NAME:</span>
+                <span>{user?.name.toUpperCase()}</span>
               </div>
-              <div className="flex justify-between">
+              {/* <div className="flex justify-evenly">
                 <span className="font-semibold">Department:</span>
                 <span>{user?.department}</span>
+              </div> */}
+              <div className="flex justify-evenly">
+                <span className="font-semibold">DESIGNATION:</span>
+                <span>{user?.designation.toUpperCase()}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="font-semibold">Designation:</span>
-                <span>{user?.designation}</span>
-              </div>
-              {user?.department === 'RPF' && (
+              {/* {user?.department === 'RPF' && (
                 <>
-                  <div className="flex justify-between">
+                  <div className="flex justify-evenly">
                     <span className="font-semibold">Division:</span>
                     <span>{user.division}</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-evenly">
                     <span className="font-semibold">Zone:</span>
                     <span>{user.zone}</span>
                   </div>
@@ -74,32 +74,43 @@ const Dashboard = () => {
                     <span>{user?.district}</span>
                   </div>
                 </>
-              )}
-              <div className="flex justify-between">
-                <span className="font-semibold">Posting Place:</span>
-                <span>{user?.postingPlace}</span>
+              )} */}
+              <div className="flex justify-evenly">
+                <span className="font-semibold">POSTING PLACE:</span>
+                <span>{user?.postingPlace.toUpperCase()}</span>
               </div>
             </div>
           </div>
         )}
         <div className="flex flex-wrap items-center justify-center gap-8">
           {/* Buttons */}
+          <div className='flex flex-col md:flex-row gap-3'>
           <Link to="/dashboard" className="flex items-center justify-center w-40 h-40 bg-white text-white rounded-full border-4 border-black shadow-md hover:bg-yellow-200 transition duration-300">
-            <span className="text-center text-black text-xl font-bold">Dashboard</span>
+            <span className="text-center text-black text-xl font-bold">DASHBOARD</span>
+          </Link>
+          <Link to="/report" className="flex items-center justify-center w-40 h-40 bg-white text-white rounded-full border-4 border-black shadow-md hover:bg-yellow-200 transition duration-300">
+            <span className="text-center text-black text-xl font-bold">REPORTS</span>
+          </Link>
+        
+          <Link to="/case-data-entry" className="flex items-center justify-center w-40 h-40 bg-white text-white rounded-full border-4 border-black shadow-md hover:bg-yellow-200 transition duration-300">
+            <span className="text-center text-black text-xl font-bold">CASE DATA ENTRY</span>
+          </Link>
+          </div>
+          <div className='flex flex-col md:flex-row gap-3'>
+          <Link to="/achievement" className="flex items-center justify-center w-40 h-40 bg-white text-white rounded-full border-4 border-black shadow-md hover:bg-yellow-200 transition duration-300">
+            <span className="text-center text-black text-xl font-bold">ACHIVEMENT</span>
           </Link>
           <Link to="/court-hearing" className="flex items-center justify-center w-40 h-40 bg-white text-white rounded-full border-4 border-black shadow-md hover:bg-yellow-200 transition duration-300">
-            <span className="text-center text-black text-xl font-bold">Court Hearing</span>
+            <span className="text-center text-black text-xl font-bold">COURT HEARING</span>
           </Link>
-          <Link to="/case-data-entry" className="flex items-center justify-center w-40 h-40 bg-white text-white rounded-full border-4 border-black shadow-md hover:bg-yellow-200 transition duration-300">
-            <span className="text-center text-black text-xl font-bold">Case Data Entry</span>
+          <Link to="/myprofile" className="flex items-center justify-center w-40 h-40 bg-white text-white rounded-full border-4 border-black shadow-md hover:bg-yellow-200 transition duration-300">
+            <span className="text-center text-black text-xl font-bold">MY PROFILE</span>
           </Link>
-          <Link to="/achievement" className="flex items-center justify-center w-40 h-40 bg-white text-white rounded-full border-4 border-black shadow-md hover:bg-yellow-200 transition duration-300">
-            <span className="text-center text-black text-xl font-bold">Achievement</span>
-          </Link>
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
-export default Dashboard;
+export default Section;
